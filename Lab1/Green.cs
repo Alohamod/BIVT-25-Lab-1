@@ -84,22 +84,32 @@ namespace Lab1
             bool answer = false;
 
             // code here
-            if (x > 0) ;
+            if (x >= 0 && x <= 1)
             {
-                if ((y < 1 + x) && (x<1))
+                if ((y >= 0) && (y <= (1 - x)))
                 {
                     answer = true;
                 }
-            else
-            
-                if (y < 1 - x)
+                else
                 {
-                    answer = true;
+                    answer = false;
                 }
             }
-                // end
+            else if (x < 0 && x >= -1)
+            {
+                if ((y >= 0) && (y <= (1 + x)))
+                {
+                    answer = true;
+                }
+                else
+                {
+                    answer = false;
+                }
+            }
+            
+            // end
 
-                return answer;
+            return answer;
         }
 
         public bool Task7(int n)
@@ -107,16 +117,56 @@ namespace Lab1
             bool answer = true;
 
             // code here
+            if (n<0)
+            {
+                answer = false;
+            }
+            else
+            {
+                if (n%2 == 0)
+                {
+                    answer = false;
+                }
+                else if (Math.Abs(n) %2 == 0)
+                {
+                    answer = false;
+                }
+            }
+                // end
 
-            // end
-
-            return answer;
+                return answer;
         }
         public bool Task8(int X, int Y)
         {
             bool answer = false;
 
             // code here
+            double tea_hours = (double)(((X / 2) + (X % 2)) * Y) / 60;
+            double gym_hours = X;
+            if (gym_hours >= 3)
+            {
+                gym_hours = 7;
+
+                if ((4 - tea_hours + gym_hours) <= 7 && (4 - tea_hours + 9) >= 7)
+                {
+                    answer = true;
+                    Console.WriteLine((4 - tea_hours + gym_hours));
+                }
+            }
+            else if (gym_hours > 0 && gym_hours < 3)
+            {
+                gym_hours = 10 - gym_hours;
+                if ((4 - tea_hours + gym_hours) <= 7 && (4 - tea_hours + 9) >= 7)
+                {
+                    answer = true;
+                    Console.WriteLine(1);
+                }
+            }
+            else
+            {
+                answer = false;
+            }
+
 
             // end
 
